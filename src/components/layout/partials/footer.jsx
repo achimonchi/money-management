@@ -18,12 +18,12 @@ export default function Footer({menuActive, sizeIcon}){
         {
             name : "report",
             icon : <CalendarFill size={sizeIcon}/>,
-            url : "/report"
+            url : "/"
         },
         {
             name : "profile",
             icon : <UserFill size={sizeIcon}/>,
-            url : "/profile"
+            url : "/"
         },
     ]
 
