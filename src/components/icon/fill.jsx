@@ -87,12 +87,12 @@ export const WarningFill = ({size,className}) => {
 }
 export const ChevronRightFill = ({size,className}) => {
     return <svg className={className} width={size ?? 18} height={size ?? 18} viewBox="0 0 18 18" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-        <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" fill="currentColor" />
+        <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" fill="currentColor" />
     </svg>
 }
 export const ChevronLeftFill = ({size,className}) => {
     return <svg className={className} width={size ?? 18} height={size ?? 18} viewBox="0 0 18 18" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-        <path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd" fill="currentColor" />
+        <path fillRule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clipRule="evenodd" fill="currentColor" />
     </svg>
 }
 export const ChartPieFill = ({size,className}) => {

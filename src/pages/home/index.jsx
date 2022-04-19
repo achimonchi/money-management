@@ -1,3 +1,4 @@
+import { fromJSON } from "postcss"
 import { useEffect } from "react"
 import { useState } from "react"
 import { ChevronLeftFill, ChevronRightFill } from "../../components/icon/fill"
@@ -8,36 +9,61 @@ const tabs = [
     "pengeluaran","pemasukan"
 ]
 
-const data = [
-    {
-        name : "Tabungan",
-        type : "pengeluaran",
-        total : 6000000,
-    },
-    {
-        name : "Online Shop",
-        type : "pengeluaran",
-        total : 2500000,
-    },
-    {
-        name : "Online Shop",
-        type : "pengeluaran",
-        total : 2500000,
-    },
-]
+// const data = [
+//     {
+//         name : "Tabungan",
+//         type : "pengeluaran",
+//         total : 6000000,
+//     },
+//     {
+//         name : "Online Shop",
+//         type : "pengeluaran",
+//         total : 2500000,
+//     },
+//     {
+//         name : "Online Shop",
+//         type : "pengeluaran",
+//         total : 2500000,
+//     },
+// ]
 
 export const Home=()=>{
     const [tabActive, setTabActive] = useState("pengeluaran")
     const [budget, setBudget] = useState(13500000)
     const [expanse, setExpanse] = useState(10500000)
+    const [budgets, setBudgets] = useState([])
+    const [pembagi, setPembagi] = useState(1)
 
     useEffect(()=>{
-        let total = 0
-        data.map((d)=>{
-            total += d.total
-        })
-        setExpanse(total)
-    }, [])
+        const data = window.localStorage.getItem("budgets")
+        const json = JSON.parse(data)
+        if(json === null) {
+            setBudgets([])
+        } else {
+            setBudgets(json)
+            let total = 0
+            let totalExpanse = 0
+            json.map((j)=>{
+                if(j.type === "pemasukan"){
+                    total += parseInt(j.total)
+                } else {
+                    totalExpanse += parseInt(j.total)
+                }
+
+            })
+            setBudget(total)
+            setExpanse(totalExpanse)
+            setPembagi(totalExpanse)
+        }
+    },[])
+
+    useEffect(()=>{
+        if(tabActive === "pemasukan"){
+            setPembagi(budget)
+        } else {
+            setPembagi(expanse)
+        }
+    }, [tabActive])
     return (
         <Layout menuActive={"home"}>
             <div className="content h-full">
@@ -88,16 +114,16 @@ export const Home=()=>{
                         </div>
                         <div className="content-tabs mt-5">
                             {
-                                data.map((d, key)=>{
+                                budgets.map((d, key)=>{
                                     if(d.type === tabActive){
                                         return <div className="flex flex-col mb-3">
-                                            <span className="font-medium">{d.name} - <span className="text-sm">(Rp. {d.total.toLocaleString()})</span></span>
-                                            <span className="font-bold my-1">{(d.total / expanse * 100).toFixed(0)}%</span>
+                                            <span className="font-medium">{d.category} - <span className="text-sm">(Rp. {parseInt(d.total).toLocaleString()})</span></span>
+                                            <span className="font-bold my-1">{(d.total / pembagi * 100).toFixed(0)}%</span>
                                             <div className="border border-black rounded-full">
-                                                <div className="p-2 bg-blue-500 rounded-full" style={{width:`${(d.total / expanse * 100).toFixed(0)}%`}}></div>
+                                                <div className="p-2 bg-blue-500 rounded-full" style={{width:`${(d.total / pembagi * 100).toFixed(0)}%`}}></div>
                                             </div>
                                         </div>
-                                    }
+                                    } 
                                 })
                             }
                         </div>

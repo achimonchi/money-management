@@ -25,14 +25,12 @@ export const BudgetCategory=()=>{
             json.map((j)=>{
                 d.push({name:j, type:category})
             })
-
-            console.log({json})
             setCategories(d)
         }
     }, [])
 
     return (
-        <DetailLayout showButton={true} title={`Budget ${category[0].toUpperCase()+category.substr(1)}`}>
+        <DetailLayout linkButton={"tambah/budget"} showButton={true} title={`Budget ${category[0].toUpperCase()+category.substr(1)}`}>
             <div className="flex mt-5 p-3">
                 <div className="w-full">
                     <button onClick={()=>navigate("tambah/kategori")} className="mb-3 rounded-lg   px-4 py-2 bg-white border border-blue-500 text-blue-500">Tambah Kategori</button>

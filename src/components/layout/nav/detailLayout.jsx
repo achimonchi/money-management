@@ -2,8 +2,10 @@ import { useNavigate } from "react-router-dom"
 import { ArrowLeftFill } from "../../icon/fill"
 
 
-export const DetailLayout=({children, title, showButton})=>{
+export const DetailLayout=({children, title, showButton, linkButton})=>{
     const navigate = useNavigate()
+
+
 
     return (
         <div className="max-w-screen-sm mx-auto h-full relative overflow-hidden bg-[#F2F3FF]">
@@ -25,7 +27,7 @@ export const DetailLayout=({children, title, showButton})=>{
                 {
                     showButton
                         ? <div className="flex-none p-3">
-                        <button className="rounded-lg w-full font-medium text-white bg-blue-500 p-3 text-center">
+                        <button onClick={()=>navigate(linkButton)} className="rounded-lg w-full font-medium text-white bg-blue-500 p-3 text-center">
                             <h1>Tambah {title}</h1>
                         </button>
                     </div>

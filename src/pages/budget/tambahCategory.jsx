@@ -37,7 +37,7 @@ export const TambahCategory =()=>{
                     <input type="text" disabled value={category} className="w-full px-3 py-2 bg-gray-100 cursor-not-allowed border border-gray-200 rounded" />
                 </div>
                 <button className="bg-blue-500 px-4 py-2 w-full text-white font-medium rounded-lg mt-5">
-                    Tambah {category[0].toUpperCase() + category.substr(1)}
+                    Tambah Kategori {category[0].toUpperCase() + category.substr(1)}
                 </button>
             </form>
         </DetailLayout>

@@ -3,6 +3,7 @@ import { Home } from './pages/home';
 import { BudgetIndex } from './pages/budget';
 import { BudgetCategory } from './pages/budget/category';
 import { TambahCategory } from "./pages/budget/tambahCategory";
+import { TambahBudget } from "./pages/budget/tambahBudget";
 function App() {
   return (
     <div className="h-full ">
@@ -12,6 +13,7 @@ function App() {
           <Route path="/budget" element={<BudgetIndex/>} />
           <Route path="/budget/:category" element={<BudgetCategory/>} />
           <Route path="/budget/:category/tambah/kategori" element={<TambahCategory/>} />
+          <Route path="/budget/:category/tambah/budget" element={<TambahBudget/>} />
         </Routes>
 
     </div>
